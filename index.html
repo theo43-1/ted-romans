@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+        <meta name="theme-color" content="#8B5FBF">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TED ROMANS - Plateforme de lecture premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- AJOUTEZ CES LIGNES dans le <head> -->
+
+</head>
+<body>
+    <!-- Juste après l'ouverture du tag <body> -->
+<script>
+        // Créer automatiquement un utilisateur test au chargement
+        (function() {
+            if (!localStorage.getItem('ted_user')) {
+                const testUser = {
+                    id: 'auto_test',
+                    name: 'Lecteur TED',
+                    email: 'lecteur@tedromans.com',
+                    password: 'ted123',
+                    joinedDate: new Date().toISOString(),
+                    lastLogin: new Date().toISOString(),
+                    subscription: { plan: 'premium' }
+                };
+                
+                localStorage.setItem('ted_user', JSON.stringify(testUser));
+                console.log('Auto-test user created');
+            }
+        })();
+    </script>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <h1>TED <span>ROMANS</span></h1>
+                </div>
+                <p class="tagline">L'excellence littéraire</p>  
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#accueil" class="active"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="#bibliotheque"><i class="fas fa-book"></i> Bibliothèque</a></li>
+                    <li><a href="subscription.html"><i class="fas fa-gem"></i> Abonnement</a></li>
+                    <li>
+                        <a href="#" id="profile-link">
+                            <i class="fas fa-user"></i> 
+                            <span id="user-name">Compte</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav-actions">
+                    <div class="user-menu">
+                        <button class="btn-login" id="login-btn">Connexion</button>
+                        <button class="btn-signup" id="signup-btn">Inscription</button>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Modal d'authentification -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                
+                <h2 id="auth-title">Connexion</h2>
+                <button class="close-modal"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Connexion</button>
+                    <button class="auth-tab" data-tab="signup">Inscription</button>
+                    
+                </div>
+                
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" placeholder="Votre mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn-auth">Se connecter</button>
+                    </div>
+                </form>
+                
+                <form id="signup-form" class="auth-form hidden">
+                    <div class="form-group">
+                        <label for="signup-name">Nom complet</label>
+                        <input type="text" id="signup-name" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Mot de passe</label>
+                        <input type="password" id="signup-password" placeholder="Créez un mot de passe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-confirm">Confirmer le mot de passe</label>
+                        <input type="password" id="signup-confirm" placeholder="Confirmez votre mot de passe" required>
+                    </div>
+                    <button type="submit" class="btn-auth">S'inscrire gratuitement</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de publicité -->
+    <div id="ad-modal" class="modal hidden">
+        <div class="modal-content ad-modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-ad"></i> Publicité</h3>
+                <div class="ad-timer">
+                    <span id="ad-countdown">5</span>s
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="ad-content">
+                    <h4>Cette lecture est sponsorisée</h4>
+                    <div class="ad-banner">
+                        <p class="ad-simulated">DÉCOUVREZ NOS PARTENAIRES</p>
+                        <p class="ad-description">Les publicités permettent de financer cette plateforme gratuite</p>
+                    </div>
+                    <div class="ad-notice">
+                        <p><a href="#abonnement" class="premium-link">
+                            <i class="fas fa-gem"></i> Passez à Premium pour supprimer les publicités
+                        </a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-skip-ad" id="skip-ad" disabled>
+                    Passer (<span id="skip-countdown">5</span>s)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero section -->
+    <section class="hero" id="accueil">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Plongez dans des univers captivants</h2>
+                    <p class="hero-subtitle">Découvrez une collection exclusive de romans en ligne. Lecture gratuite avec publicités ou sans pub avec notre abonnement premium.</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Romans</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">10k+</span>
+                            <span class="stat-label">Lecteurs</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Note moyenne</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-primary" id="hero-signup">
+                            <i class="fas fa-user-plus"></i> Commencer gratuitement
+                        </button>
+                        <a href="subscription.html" class="btn-secondary">
+                            <i class="fas fa-gem"></i> Découvrir Premium
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-book">
+                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Roman en vedette">
+                        <div class="book-badge">
+                            <i class="fas fa-fire"></i> Tendance
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     
+    <!-- Section Bibliothèque -->
+    <section class="library-section" id="bibliotheque">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Bibliothèque</h2>
+                <p class="section-subtitle">Découvrez nos romans</p>
+                <div class="library-filters">
+                    <button class="filter-btn active" data-filter="all">Tous</button>
+                    <button class="filter-btn" data-filter="mystery">Mystère</button>
+                    <button class="filter-btn" data-filter="romance">Romance</button>
+                    <button class="filter-btn" data-filter="fantasy">Fantasy</button>
+                </div>
+            </div>
+            
+            <div class="novels-grid" id="novels-container">
+                <!-- Les romans seront injectés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Favoris -->
+    <section class="favorites-section" id="favoris">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mes Favoris</h2>
+                <p class="section-subtitle" id="favorites-subtitle">Connectez-vous pour voir vos favoris</p>
+            </div>
+            
+            <div class="favorites-grid" id="favorites-container">
+                <!-- Les favoris seront injectés par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lecteur de roman -->
+    <section class="reader-section hidden" id="reader-section">
+        <div class="reader-header">
+            <div class="container">
+                <div class="reader-nav">
+                    <button class="btn-back" id="reader-back">
+                        <i class="fas fa-arrow-left"></i> Retour
+                    </button>
+                    <div class="reader-title">
+                        <h2 id="reader-novel-title">Chargement...</h2>
+                        <div class="reader-meta">
+                            Page <span id="current-page-num">1</span>/<span id="total-pages-num">1</span>
+                            • Chapitres <span id="current-chapters-range">1-2</span>
+                        </div>
+                    </div>
+                    <div class="reader-actions">
+                        <button class="reader-action-btn" id="reader-favorite-btn" title="Ajouter aux favoris">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reader-content">
+            <div class="container">
+                <div class="page-container">
+                    <!-- Premier chapitre -->
+                    <div class="chapter-box" id="chapter1-box">
+                        <div class="chapter-header">
+                            <h3 id="chapter1-title">Chapitre 1</h3>
+                        </div>
+                        <div class="chapter-content" id="chapter1-content">
+                            <p>Chargement du contenu...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Séparateur -->
+                    <div class="chapter-separator">
+                        <div class="separator-line"></div>
+                        <div class="separator-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="separator-line"></div>
+                    </div>
+                    
+                    <!-- Deuxième chapitre -->
+                    <div class="chapter-box" id="chapter2-box">
+                        <div class="chapter-header">
+                            <h3 id="chapter2-title">Chapitre 2</h3>
+                        </div>
+                        <div class="chapter-content" id="chapter2-content">
+                            <p>Chargement du contenu...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Note publicité -->
+                <div class="ad-notice-box" id="ad-notice-box">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Une publicité sera affichée avant la page suivante. <a href="subscription.html">Passer à Premium</a> pour lire sans interruption.</p>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="page-navigation">
+                    <button class="btn-nav prev-btn" id="prev-page-btn">
+                        <i class="fas fa-chevron-left"></i> Précédent
+                    </button>
+                    
+                    <div class="page-info">
+                        Page <span id="page-current">1</span> sur <span id="page-total">1</span>
+                    </div>
+                    
+                    <button class="btn-nav next-btn" id="next-page-btn">
+                        Suivant <i class="fas fa-chevron-right"></i>
+                        <span class="ad-badge"><i class="fas fa-ad"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-crown"></i>
+                        <h2>TED <span>ROMANS</span></h2>
+                    </div>
+                    <p class="footer-tagline">L'excellence littéraire à portée de clic</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#accueil">Accueil</a></li>
+                            <li><a href="#bibliotheque">Bibliothèque</a></li>
+                            <li><a href="#favoris">Favoris</a></li>
+                            <li><a href="subscription.html">Abonnement</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Romans</h4>
+                        <ul>
+                            <li><a href="#">Nouveautés</a></li>
+                            <li><a href="#">Populaires</a></li>
+                            <li><a href="#">Sélections</a></li>
+                            <li><a href="#">Complets</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help.html">Centre d'aide</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="privacy.html">Politique de confidentialité</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les nouveautés</p>
+                    <form class="newsletter-form" id="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TED ROMANS. Tous droits réservés.</p>
+                <div class="footer-payment">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="script.js"></script>
+    <script src="sync.js"></script>
+    <script>
+// ===== FONCTION POUR GÉRER LES BOUTONS =====
+function updateAuthButtons() {
+    const user = JSON.parse(localStorage.getItem('ted_user') || '{}');
+    
+    // Vérifier si l'utilisateur existe vraiment
+    const userData = localStorage.getItem('ted_user');
+    let isLoggedIn = false;
+    
+    if (userData) {
+        try {
+            const parsedUser = JSON.parse(userData);
+            // Vérifier si l'utilisateur a au moins un email ou username
+            isLoggedIn = !!(parsedUser.email || parsedUser.username);
+        } catch (e) {
+            console.error('Erreur de parsing user data:', e);
+            isLoggedIn = false;
+        }
+    }
+    
+    const profileLink = document.getElementById('profile-link');
+    const userName = document.getElementById('user-name');
+    const loginBtn = document.getElementById('login-btn');
+    const signupBtn = document.getElementById('signup-btn');
+    
+    if (isLoggedIn) {
+        console.log('Utilisateur connecté:', user);
+        // Utilisateur connecté
+        if (profileLink) {
+            profileLink.href = 'profile.html';
+            profileLink.style.cursor = 'pointer';
+            profileLink.onclick = null; // Supprimer l'ancien événement
+        }
+        if (userName) {
+            userName.textContent = user.name || user.username || 'Mon Profil';
+        }
+        if (loginBtn) {
+            loginBtn.textContent = 'Mon Profil';
+            loginBtn.onclick = function(e) {
+                e.preventDefault();
+                window.location.href = 'profile.html';
+            };
+            loginBtn.classList.remove('btn-login');
+            loginBtn.classList.add('btn-profile');
+        }
+        if (signupBtn) {
+            signupBtn.textContent = 'Déconnexion';
+            signupBtn.onclick = function(e) {
+                e.preventDefault();
+                if (confirm('Voulez-vous vous déconnecter ?')) {
+                    // Sauvegarder dernière connexion
+                    const users = JSON.parse(localStorage.getItem('ted_users') || '[]');
+                    if (user && user.email) {
+                        const userIndex = users.findIndex(u => u.email === user.email);
+                        if (userIndex > -1) {
+                            users[userIndex].lastLogin = new Date().toISOString();
+                            localStorage.setItem('ted_users', JSON.stringify(users));
+                        }
+                    }
+                    
+                    // SUPPRIMER la session
+                    localStorage.removeItem('ted_user');
+                    console.log('Utilisateur déconnecté');
+                    
+                    // Recharger pour mettre à jour l'interface
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 100);
+                }
+            };
+            signupBtn.classList.remove('btn-signup');
+            signupBtn.classList.add('btn-logout');
+        }
+    } else {
+        console.log('Utilisateur non connecté');
+        // Utilisateur non connecté
+        if (profileLink) {
+            profileLink.href = '#';
+            profileLink.onclick = function(e) {
+                e.preventDefault();
+                showAuthModal('login');
+            };
+        }
+        if (userName) userName.textContent = 'Compte';
+        if (loginBtn) {
+            loginBtn.textContent = 'Connexion';
+            loginBtn.onclick = function(e) {
+                e.preventDefault();
+                showAuthModal('login');
+            };
+            loginBtn.classList.add('btn-login');
+            loginBtn.classList.remove('btn-profile');
+        }
+        if (signupBtn) {
+            signupBtn.textContent = 'Inscription';
+            signupBtn.onclick = function(e) {
+                e.preventDefault();
+                showAuthModal('signup');
+            };
+            signupBtn.classList.add('btn-signup');
+            signupBtn.classList.remove('btn-logout');
+        }
+    }
+}
+// ===== FIN DE LA FONCTION =====
+// ===== FONCTION DE DÉCONNEXION SIMPLE =====
+function logoutUser() {
+    if (confirm('Voulez-vous vous déconnecter ?')) {
+        // Vérifier d'abord si un utilisateur existe
+        const userData = localStorage.getItem('ted_user');
+        if (userData) {
+            try {
+                const user = JSON.parse(userData);
+                
+                // Mettre à jour la dernière connexion dans la base
+                const users = JSON.parse(localStorage.getItem('ted_users') || '[]');
+                if (user && user.email) {
+                    const userIndex = users.findIndex(u => u.email === user.email);
+                    if (userIndex > -1) {
+                        users[userIndex].lastLogin = new Date().toISOString();
+                        localStorage.setItem('ted_users', JSON.stringify(users));
+                    }
+                }
+            } catch (e) {
+                console.error('Erreur lors de la mise à jour de la dernière connexion:', e);
+            }
+        }
+        
+        // Supprimer la session utilisateur
+        localStorage.removeItem('ted_user');
+        
+        // Rediriger vers l'accueil
+        window.location.href = 'index.html';
+    }
+}
+// ===== FIN DE LA FONCTION =====
+// ===== FIN DE LA NOUVELLE FONCTION =====
+        // Gestion améliorée de la modal d'authentification
+        document.addEventListener('DOMContentLoaded', function() {
+            updateAuthButtons();
+            
+            // Récupérer les éléments
+            const authModal = document.getElementById('auth-modal');
+            const loginBtn = document.getElementById('login-btn');
+            const signupBtn = document.getElementById('signup-btn');
+            const heroSignupBtn = document.getElementById('hero-signup');
+            const closeModalBtn = document.querySelector('.close-modal');
+            const authTabs = document.querySelectorAll('.auth-tab');
+            const authForms = document.querySelectorAll('.auth-form');
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            
+            // Fonction pour montrer la modal
+            function showAuthModal(tab = 'login') {
+                authModal.classList.remove('hidden');
+                // Activer le bon onglet
+                authTabs.forEach(tabElement => {
+                    tabElement.classList.remove('active');
+                    if (tabElement.dataset.tab === tab) {
+                        tabElement.classList.add('active');
+                    }
+                });
+                
+                // Afficher le bon formulaire
+                authForms.forEach(form => {
+                    form.classList.add('hidden');
+                });
+                if (tab === 'login') {
+                    loginForm.classList.remove('hidden');
+                    document.getElementById('auth-title').textContent = 'Connexion';
+                } else {
+                    signupForm.classList.remove('hidden');
+                    document.getElementById('auth-title').textContent = 'Inscription';
+                }
+            }
+            
+            // Fonction pour cacher la modal
+            function hideAuthModal() {
+                authModal.classList.add('hidden');
+            }
+            
+            // Gestion de l'inscription
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('signup-name').value.trim();
+                const email = document.getElementById('signup-email').value.trim();
+                const password = document.getElementById('signup-password').value;
+                const confirmPassword = document.getElementById('signup-confirm').value;
+                
+                // Validation
+                if (!name || !email || !password || !confirmPassword) {
+                    toastr.error('Veuillez remplir tous les champs');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    toastr.error('Les mots de passe ne correspondent pas');
+                    return;
+                }
+                
+                // Vérifier la force du mot de passe
+                if (password.length < 8) {
+                    toastr.error('Le mot de passe doit contenir au moins 8 caractères');
+                    return;
+                }
+                
+                // Vérifier si l'email existe déjà
+                const users = JSON.parse(localStorage.getItem('ted_users') || '[]');
+                const emailExists = users.some(u => u.email === email);
+                
+                if (emailExists) {
+                    toastr.error('Cet email est déjà utilisé');
+                    return;
+                }
+                
+                // Créer le nouvel utilisateur
+                const newUser = {
+                    id: Date.now(),
+                    name: name,
+                    email: email,
+                    password: password,
+                    joinedDate: new Date().toISOString(),
+                    lastLogin: new Date().toISOString(),
+                    subscription: { plan: 'free' }
+                };
+                
+                // Ajouter à la liste des utilisateurs
+                users.push(newUser);
+                localStorage.setItem('ted_users', JSON.stringify(users));
+                
+                // Créer la session (connexion automatique)
+                localStorage.setItem('ted_user', JSON.stringify(newUser));
+                 // AJOUTER CES DEUX LIGNES :
+                        updateAuthButtons();  // Mettre à jour les boutons
+                        hideAuthModal();      // Fermer la modal
+                
+                // Message de succès
+                toastr.success('Compte créé avec succès ! Redirection vers votre profil...');
+                
+                // Fermer la modal
+                hideAuthModal();
+                
+                // Rediriger vers le profil après 1.5 secondes
+                setTimeout(() => {
+                    window.location.href = 'profile.html';
+                }, 1500);
+            });
+            
+            // Gestion de la connexion
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('login-email').value.trim();
+                const password = document.getElementById('login-password').value;
+                
+                // Validation
+                if (!email || !password) {
+                    toastr.error('Veuillez remplir tous les champs');
+                    return;
+                }
+                
+                // Récupérer la liste des utilisateurs
+                const users = JSON.parse(localStorage.getItem('ted_users') || '[]');
+                
+                // Chercher l'utilisateur
+                const user = users.find(u => u.email === email && u.password === password);
+                
+                if (user) {
+                    // Mettre à jour la dernière connexion
+                    user.lastLogin = new Date().toISOString();
+                    
+                    // Sauvegarder la liste mise à jour
+                    localStorage.setItem('ted_users', JSON.stringify(users));
+                    
+                    // Créer la session
+                    localStorage.setItem('ted_user', JSON.stringify(user));
+                    updateAuthButtons();  // Mettre à jour les boutons
+                    hideAuthModal();      // Fermer la modal
+                    
+                    // Message de succès
+                    toastr.success('Connexion réussie ! Redirection vers votre profil...');
+                    
+                    // Fermer la modal
+                    hideAuthModal();
+                    
+                    // Rediriger vers le profil après 1 seconde
+                    setTimeout(() => {
+                        window.location.href = 'profile.html';
+                    }, 1000);
+                } else {
+                    toastr.error('Identifiants incorrects');
+                }
+            });
+            
+    
+            
+            // Fermer la modal
+            closeModalBtn.addEventListener('click', hideAuthModal);
+            
+            // Changer d'onglet dans la modal
+            authTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.dataset.tab;
+                    showAuthModal(tabId);
+                });
+            });
+            
+            // Fermer la modal en cliquant à l'extérieur
+            authModal.addEventListener('click', function(e) {
+                if (e.target === authModal) {
+                    hideAuthModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
