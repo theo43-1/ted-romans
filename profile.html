@@ -1126,5 +1126,32 @@
     }
 }
     </script>
+    <script>
+    // Menu mobile
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuBtn = document.createElement('button');
+        mobileMenuBtn.className = 'mobile-menu-btn';
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        
+        const navLinks = document.querySelector('.nav-links');
+        const mainNav = document.querySelector('.main-nav');
+        
+        if (mainNav && navLinks) {
+            mainNav.appendChild(mobileMenuBtn);
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Fermer le menu en cliquant ailleurs
+            document.addEventListener('click', function(e) {
+                if (!mainNav.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+    });
+</script>
 </body>
+
 </html>
