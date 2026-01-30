@@ -1,0 +1,38 @@
+{
+  "name": "TED Romans",
+  "short_name": "TED Romans",
+  "description": "Plateforme de lecture de romans avec système d'abonnement",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#162447",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/images/teddy.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/teddy.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["books", "entertainment", "education"],
+  "shortcuts": [
+    {
+      "name": "Continuer la lecture",
+      "short_name": "Lecture",
+      "description": "Reprendre là où vous vous êtes arrêté",
+      "url": "/?action=resume"
+    },
+    {
+      "name": "Nouveautés",
+      "short_name": "Nouveaux",
+      "description": "Découvrir les nouveaux chapitres",
+      "url": "/?action=new"
+    }
+  ],
+  "prefer_related_applications": false
+}

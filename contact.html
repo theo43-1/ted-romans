@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - TED ROMANS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <h1>TED <span>ROMANS</span></h1>
+                </div>
+                <p class="tagline">L'excellence littéraire</p>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="index.html#bibliotheque"><i class="fas fa-book"></i> Bibliothèque</a></li>
+                    <li><a href="index.html#abonnement"><i class="fas fa-gem"></i> Abonnement</a></li>
+                    <li><a href="help.html"><i class="fas fa-question-circle"></i> Aide</a></li>
+                    <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Contactez-nous</h2>
+                    <p class="hero-subtitle">Nous sommes là pour vous aider</p>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-book">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Formulaire -->
+                <div class="contact-form-container">
+                    <h2><i class="fas fa-paper-plane"></i> Envoyer un message</h2>
+                    <p>Remplissez le formulaire ci-dessous, nous vous répondrons dans les 24h.</p>
+                    <form action="mailto:contact.tedromans@gmail.com" 
+      method="post" 
+      enctype="text/plain" 
+      id="contact-form" 
+      class="contact-form">
+    
+    <div class="form-group">
+        <label for="contact-name">Nom complet *</label>
+        <input type="text" id="contact-name" name="name" placeholder="Votre nom" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="contact-email">Adresse email *</label>
+        <input type="email" id="contact-email" name="email" placeholder="votre@email.com" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="contact-subject">Sujet *</label>
+        <select id="contact-subject" name="subject" required>
+            <option value="">Sélectionnez un sujet</option>
+            <option value="support">Support technique</option>
+            <option value="billing">Problème de facturation</option>
+            <option value="account">Problème de compte</option>
+            <option value="content">Contenu / Romans</option>
+            <option value="partnership">Partenariat</option>
+            <option value="other">Autre</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="contact-message">Message *</label>
+        <textarea id="contact-message" name="message" rows="6" placeholder="Décrivez votre demande..." required></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label class="checkbox-label">
+            <input type="checkbox" name="accept_policy" required>
+            <span>J'accepte la <a href="privacy.html">politique de confidentialité</a></span>
+        </label>
+    </div>
+    
+    <button type="submit" class="btn-primary btn-submit">
+        <i class="fas fa-paper-plane"></i> Envoyer le message
+    </button>
+</form>
+                </div>
+
+                <!-- Informations de contact -->
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h3><i class="fas fa-info-circle"></i> Informations de contact</h3>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>info.tedromans@gmail.com</p>
+                                <small>Réponse sous 24h</small>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Support</h4>
+                                <p>Du lundi au vendredi</p>
+                                <p>9h - 18h (GMT+1)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Adresse</h4>
+                                <p>TED ROMANS SAS</p>
+                                <p>123 Avenue des Livres</p>
+                                <p>75000 Paris, France</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Rapide -->
+                    <div class="faq-preview">
+                        <h3><i class="fas fa-question-circle"></i> Questions fréquentes</h3>
+                        <div class="faq-list">
+                            <a href="help.html#faq1" class="faq-link">
+                                <i class="fas fa-chevron-right"></i>
+                                Comment annuler mon abonnement ?
+                            </a>
+                            <a href="help.html#faq2" class="faq-link">
+                                <i class="fas fa-chevron-right"></i>
+                                Pourquoi je vois des publicités ?
+                            </a>
+                            <a href="help.html#faq3" class="faq-link">
+                                <i class="fas fa-chevron-right"></i>
+                                Mot de passe oublié ?
+                            </a>
+                            <a href="help.html#faq4" class="faq-link">
+                                <i class="fas fa-chevron-right"></i>
+                                Lire hors connexion
+                            </a>
+                        </div>
+                        <a href="help.html" class="btn-secondary">
+                            <i class="fas fa-book"></i> Voir toutes les FAQ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-crown"></i>
+                        <h2>TED <span>ROMANS</span></h2>
+                    </div>
+                    <p class="footer-tagline">L'excellence littéraire à portée de clic</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help.html">Centre d'aide</a></li>
+                            <li><a href="contact.html" class="active">Contact</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="privacy.html">Confidentialité</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les nouveautés</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TED ROMANS. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Message de confirmation avant envoi
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            // Vérifier que tout est valide
+            if (!this.checkValidity()) {
+                return; // Laisser le navigateur afficher les erreurs
+            }
+            
+            // Afficher un message
+            const confirmation = confirm('Votre message va être envoyé. Voulez-vous continuer ?\n\nNote: Votre client email s\'ouvrira pour finaliser l\'envoi.');
+            
+            if (!confirmation) {
+                e.preventDefault(); // Annuler si l'utilisateur dit non
+            } else {
+                // Ajouter un petit délai pour afficher le message
+                setTimeout(() => {
+                    alert('Votre client email va s\'ouvrir. Merci de finaliser l\'envoi depuis votre boîte mail.');
+                }, 100);
+            }
+        });
+        
+        // Optionnel: Personnaliser le sujet de l'email
+        document.getElementById('contact-subject').addEventListener('change', function() {
+            // Vous pouvez ajouter un sujet personnalisé si besoin
+            const selectedText = this.options[this.selectedIndex].text;
+            console.log('Sujet sélectionné:', selectedText);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil - TED ROMANS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <h1>TED <span>ROMANS</span></h1>
+                </div>
+                <p class="tagline">L'excellence littéraire</p>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="index.html#bibliotheque"><i class="fas fa-book"></i> Bibliothèque</a></li>
+                    <li><a href="subscription.html"><i class="fas fa-gem"></i> Abonnement</a></li>
+                    <li><a href="profile.html" class="active"><i class="fas fa-user"></i> Mon Profil</a></li>
+                    <button onclick="localStorage.clear(); window.location.reload();" style="padding: 10px 20px; background: var(--danger-color); color: white; border: none; border-radius: 5px; cursor: pointer; margin: 5px;">
+                            <i class="fas fa-trash"></i> Déconnexion
+                        </button>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero profile-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Mon Espace Personnel</h2>
+                    <p class="hero-subtitle">Gérez votre compte, vos préférences et votre abonnement</p>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-book">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Content -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-grid">
+                <!-- Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="user-card">
+                        <div class="user-avatar">
+                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=8B5FBF&color=fff&size=150" 
+                                 alt="Avatar" id="user-avatar-img">
+                            <button class="avatar-upload" id="upload-avatar">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+                        <div class="user-info">
+                            <h3 id="user-fullname">Chargement...</h3>
+                            <p class="user-email" id="user-email-display">Chargement...</p>
+                            <div class="user-status">
+                                <span class="status-badge" id="user-status">Gratuit</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <nav class="profile-nav">
+                        <a href="#informations" class="nav-item active" data-tab="informations">
+                            <i class="fas fa-user"></i>
+                            <span>Informations personnelles</span>
+                        </a>
+                        <a href="#securite" class="nav-item" data-tab="securite">
+                            <i class="fas fa-lock"></i>
+                            <span>Mot de passe</span>
+                        </a>
+                        <a href="#abonnement-profile" class="nav-item" data-tab="abonnement">
+                            <i class="fas fa-gem"></i>
+                            <span>Abonnement</span>
+                        </a>
+                        <a href="#preferences" class="nav-item" data-tab="preferences">
+                            <i class="fas fa-sliders-h"></i>
+                            <span>Préférences</span>
+                        </a>
+                        <a href="#historique" class="nav-item" data-tab="historique">
+                            <i class="fas fa-history"></i>
+                            <span>Historique</span>
+                        </a>
+                    </nav>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-book-open"></i>
+                            <div>
+                                <span class="stat-number" id="books-read">0</span>
+                                <span class="stat-label">Romans lus</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <span class="stat-number" id="favorites-count">0</span>
+                                <span class="stat-label">Favoris</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <span class="stat-number" id="reading-time">0</span>
+                                <span class="stat-label">Heures</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="profile-main">
+                    <!-- Informations personnelles -->
+                    <div id="informations-tab" class="tab-content active">
+                        <div class="tab-header">
+                            <h2><i class="fas fa-user"></i> Informations personnelles</h2>
+                            <button class="btn-edit" id="edit-profile">
+                                <i class="fas fa-edit"></i> Modifier
+                            </button>
+                        </div>
+                        
+                        <div class="info-display" id="profile-display">
+                            <div class="info-row">
+                                <div class="info-label">Nom complet</div>
+                                <div class="info-value" id="display-name">Chargement...</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Email</div>
+                                <div class="info-value" id="display-email">Chargement...</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Date d'inscription</div>
+                                <div class="info-value" id="display-joined">Chargement...</div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-label">Dernière connexion</div>
+                                <div class="info-value" id="display-last-login">Chargement...</div>
+                            </div>
+                        </div>
+                        
+                        <form id="profile-form" class="info-form hidden">
+                            <div class="form-group">
+                                <label for="profile-name">Nom complet</label>
+                                <input type="text" id="profile-name" placeholder="Votre nom complet" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="profile-email">Adresse email</label>
+                                <input type="email" id="profile-email" placeholder="votre@email.com" required>
+                                <small class="form-help">
+                                    <i class="fas fa-info-circle"></i>
+                                    Vous recevrez un email de confirmation pour valider le changement
+                                </small>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" id="cancel-edit">
+                                    Annuler
+                                </button>
+                                <button type="submit" class="btn-primary">
+                                    <i class="fas fa-save"></i> Enregistrer
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Sécurité / Mot de passe -->
+                    <div id="securite-tab" class="tab-content">
+                        <div class="tab-header">
+                            <h2><i class="fas fa-lock"></i> Sécurité du compte</h2>
+                        </div>
+                        
+                        <div class="security-section">
+                            <h3><i class="fas fa-key"></i> Changer le mot de passe</h3>
+                            <form id="password-form" class="password-form">
+                                <div class="form-group">
+                                    <label for="current-password">Mot de passe actuel</label>
+                                    <div class="password-input">
+                                        <input type="password" id="current-password" placeholder="Entrez votre mot de passe actuel" required>
+                                        <button type="button" class="toggle-password" data-target="current-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="new-password">Nouveau mot de passe</label>
+                                    <div class="password-input">
+                                        <input type="password" id="new-password" placeholder="Créez un nouveau mot de passe" required>
+                                        <button type="button" class="toggle-password" data-target="new-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength">
+                                        <div class="strength-bar">
+                                            <div class="strength-fill" id="strength-fill"></div>
+                                        </div>
+                                        <span class="strength-text" id="strength-text">Faible</span>
+                                    </div>
+                                    <small class="form-help">
+                                        <i class="fas fa-info-circle"></i>
+                                        Minimum 8 caractères, avec majuscules, minuscules et chiffres
+                                    </small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirmer le mot de passe</label>
+                                    <div class="password-input">
+                                        <input type="password" id="confirm-password" placeholder="Confirmez le nouveau mot de passe" required>
+                                        <button type="button" class="toggle-password" data-target="confirm-password">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-match" id="password-match">
+                                        <i class="fas fa-check"></i>
+                                        <span>Les mots de passe correspondent</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary">
+                                        <i class="fas fa-sync-alt"></i> Changer le mot de passe
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="security-section">
+                            <h3><i class="fas fa-shield-alt"></i> Sécurité avancée</h3>
+                            <div class="security-options">
+                                <div class="option-item">
+                                    <div class="option-info">
+                                        <h4>Connexion à deux facteurs</h4>
+                                        <p>Ajoutez une couche de sécurité supplémentaire</p>
+                                    </div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="two-factor">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="option-item">
+                                    <div class="option-info">
+                                        <h4>Sessions actives</h4>
+                                        <p>Gérez vos connexions sur d'autres appareils</p>
+                                    </div>
+                                    <button class="btn-secondary btn-sm" id="view-sessions">
+                                        <i class="fas fa-desktop"></i> Voir les sessions
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Abonnement -->
+                    <div id="abonnement-tab" class="tab-content">
+                        <div class="tab-header">
+                            <h2><i class="fas fa-gem"></i> Mon abonnement</h2>
+                            <button class="btn-primary" id="upgrade-plan">
+                                <i class="fas fa-crown"></i> Passer à Premium
+                            </button>
+                        </div>
+                        
+                        <div class="subscription-status" id="subscription-display">
+                            <div class="subscription-card">
+                                <div class="subscription-header">
+                                    <div>
+                                        <h3 id="current-plan">Gratuit</h3>
+                                        <p class="subscription-desc" id="plan-description">Accès limité avec publicités</p>
+                                    </div>
+                                    <div class="subscription-badge free">GRATUIT</div>
+                                </div>
+                                
+                                <div class="subscription-features">
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>Accès aux romans populaires</span>
+                                    </div>
+                                    <div class="feature-item">
+                                        <i class="fas fa-check"></i>
+                                        <span>10 romans en favoris</span>
+                                    </div>
+                                    <div class="feature-item unavailable">
+                                        <i class="fas fa-times"></i>
+                                        <span>Lecture sans publicités</span>
+                                    </div>
+                                    <div class="feature-item unavailable">
+                                        <i class="fas fa-times"></i>
+                                        <span>Téléchargement hors-ligne</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="subscription-actions">
+                                    <button class="btn-secondary" id="manage-subscription">
+                                        <i class="fas fa-cog"></i> Gérer l'abonnement
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="billing-history">
+                            <h3><i class="fas fa-receipt"></i> Historique des paiements</h3>
+                            <div class="billing-table">
+                                <div class="table-header">
+                                    <div>Date</div>
+                                    <div>Description</div>
+                                    <div>Montant</div>
+                                    <div>Statut</div>
+                                </div>
+                                <div class="table-empty" id="billing-empty">
+                                    <i class="fas fa-receipt"></i>
+                                    <p>Aucun paiement pour le moment</p>
+                                </div>
+                                <div class="table-content" id="billing-content">
+                                    <!-- Les paiements seront ajoutés dynamiquement -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Préférences -->
+                    <div id="preferences-tab" class="tab-content">
+                        <div class="tab-header">
+                            <h2><i class="fas fa-sliders-h"></i> Préférences de lecture</h2>
+                        </div>
+                        
+                        <div class="preferences-grid">
+                            <div class="preference-section">
+                                <h3><i class="fas fa-eye"></i> Apparence</h3>
+                                
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Thème</h4>
+                                        <p>Choisissez le thème d'affichage</p>
+                                    </div>
+                                    <div class="theme-selector">
+                                        <button class="theme-option active" data-theme="light">
+                                            <i class="fas fa-sun"></i>
+                                            <span>Clair</span>
+                                        </button>
+                                        <button class="theme-option" data-theme="dark">
+                                            <i class="fas fa-moon"></i>
+                                            <span>Sombre</span>
+                                        </button>
+                                        <button class="theme-option" data-theme="sepia">
+                                            <i class="fas fa-book"></i>
+                                            <span>Sépia</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="preference-item">
+                                    <div class="preference-info">
+                                        <h4>Taille de police</h4>
+                                        <p>Ajustez la taille du texte pour la lecture</p>
+                                    </div>
+                                    <div class="font-size-control">
+                                        <button class="font-size-btn" id="decrease-font">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <span class="font-size-value" id="font-size-value">16px</span>
+                                        <button class="font-size-btn" id="increase-font">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="preference-section">
+                                <h3><i class="fas fa-bell"></i> Notifications</h3>
+                                
+                                <div class="notification-options">
+                                    <div class="option-item">
+                                        <div class="option-info">
+                                            <h4>Nouveaux chapitres</h4>
+                                            <p>Recevoir une notification quand un nouveau chapitre est publié</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notif-chapters" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="option-item">
+                                        <div class="option-info">
+                                            <h4>Promotions</h4>
+                                            <p>Être informé des offres spéciales</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notif-promotions" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="option-item">
+                                        <div class="option-info">
+                                            <h4>Newsletter</h4>
+                                            <p>Recevoir notre newsletter hebdomadaire</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="notif-newsletter">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="preference-section">
+                                <h3><i class="fas fa-language"></i> Langue</h3>
+                                
+                                <div class="language-selector">
+                                    <select id="language-select">
+                                        <option value="fr">Français</option>
+                                        <option value="en">English</option>
+                                        <option value="es">Español</option>
+                                    </select>
+                                    <button class="btn-secondary btn-sm" id="save-language">
+                                        <i class="fas fa-save"></i> Enregistrer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Historique -->
+                    <div id="historique-tab" class="tab-content">
+                        <div class="tab-header">
+                            <h2><i class="fas fa-history"></i> Historique de lecture</h2>
+                            <button class="btn-secondary" id="clear-history">
+                                <i class="fas fa-trash"></i> Effacer l'historique
+                            </button>
+                        </div>
+                        
+                        <div class="reading-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-book-open"></i>
+                                <div class="stat-content">
+                                    <span class="stat-big" id="total-books">0</span>
+                                    <span class="stat-label">Romans lus</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-clock"></i>
+                                <div class="stat-content">
+                                    <span class="stat-big" id="total-hours">0</span>
+                                    <span class="stat-label">Heures de lecture</span>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-calendar"></i>
+                                <div class="stat-content">
+                                    <span class="stat-big" id="reading-streak">0</span>
+                                    <span class="stat-label">Jours consécutifs</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-activity">
+                            <h3><i class="fas fa-fire"></i> Activité récente</h3>
+                            <div class="activity-list" id="activity-list">
+                                <div class="activity-empty">
+                                    <i class="fas fa-book-reader"></i>
+                                    <p>Commencez à lire pour voir votre historique</p>
+                                    <a href="index.html#bibliotheque" class="btn-primary">
+                                        <i class="fas fa-book"></i> Découvrir des romans
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logout Modal -->
+    <div id="logout-modal" class="modal hidden">
+        <div class="modal-content logout-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-sign-out-alt"></i> Déconnexion</h2>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir vous déconnecter ?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="hideLogoutModal()">
+                    Annuler
+                </button>
+                <button class="btn-primary" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Se déconnecter
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-crown"></i>
+                        <h2>TED <span>ROMANS</span></h2>
+                    </div>
+                    <p class="footer-tagline">L'excellence littéraire à portée de clic</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Compte</h4>
+                        <ul>
+                            <li><a href="profile.html" class="active">Mon Profil</a></li>
+                            <li><a href="#" onclick="showLogoutModal()">Déconnexion</a></li>
+                            <li><a href="help.html">Aide</a></li>
+                            <li><a href="contact.html">Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TED ROMANS. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="sync.js"></script>
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // VÉRIFIER SI L'UTILISATEUR EST CONNECTÉ
+    const userData = localStorage.getItem('ted_user');
+    let isLoggedIn = false;
+    
+    if (userData) {
+        try {
+            const user = JSON.parse(userData);
+            // Vérifier si l'utilisateur a un email OU un username
+            isLoggedIn = !!(user.email || user.username);
+        } catch (error) {
+            console.error('Erreur de parsing:', error);
+            isLoggedIn = false;
+        }
+    }
+    
+    if (!isLoggedIn) {
+        alert('Veuillez vous connecter pour accéder à votre profil');
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    // Initialiser le gestionnaire de profil seulement si connecté
+    window.profileManager = new ProfileManager();
+    
+    // Charger les préférences
+    const savedFontSize = localStorage.getItem('fontSize');
+    if (savedFontSize) {
+        const fontSizeElement = document.getElementById('font-size-value');
+        if (fontSizeElement) fontSizeElement.textContent = savedFontSize + 'px';
+    }
+    
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    const themeOption = document.querySelector('[data-theme="' + savedTheme + '"]');
+    if (themeOption) themeOption.classList.add('active');
+    document.body.className = 'theme-' + savedTheme;
+    
+    const savedLanguage = localStorage.getItem('language') || 'fr';
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) languageSelect.value = savedLanguage;
+});
+        // Gestion de la page profil
+        class ProfileManager {
+            constructor() {
+                this.user = null;
+                this.initialize();
+            }
+            
+            initialize() {
+                this.loadUserData();
+                this.setupEventListeners();
+                this.loadReadingStats();
+            }
+            
+            loadUserData() {
+    // Récupérer les données de l'utilisateur depuis localStorage
+    const userData = localStorage.getItem('ted_user');
+    
+    if (!userData) {
+        // Rediriger vers la page d'accueil si non connecté
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    this.user = JSON.parse(userData);
+    
+    // Vérifier si l'utilisateur a au moins un email ou username
+    if (!this.user.email && !this.user.username) {
+        window.location.href = 'index.html';
+        return;
+    }
+    
+    this.displayUserInfo();
+    this.loadSubscriptionInfo();
+} 
+            displayUserInfo() {
+                if (!this.user) return;
+                
+                // Mettre à jour les informations utilisateur
+                document.getElementById('user-fullname').textContent = this.user.name || 'Utilisateur';
+                document.getElementById('user-email-display').textContent = this.user.email || '';
+                document.getElementById('display-name').textContent = this.user.name || 'Non défini';
+                document.getElementById('display-email').textContent = this.user.email || 'Non défini';
+                document.getElementById('profile-name').value = this.user.name || '';
+                document.getElementById('profile-email').value = this.user.email || '';
+                
+                // Date d'inscription
+                const joinedDate = this.user.joinedDate ? new Date(this.user.joinedDate).toLocaleDateString('fr-FR') : 'Aujourd\'hui';
+                document.getElementById('display-joined').textContent = joinedDate;
+                
+                // Dernière connexion
+                const lastLogin = this.user.lastLogin ? new Date(this.user.lastLogin).toLocaleString('fr-FR') : 'Maintenant';
+                document.getElementById('display-last-login').textContent = lastLogin;
+                
+                // Avatar
+                if (this.user.avatar) {
+                    document.getElementById('user-avatar-img').src = this.user.avatar;
+                } else {
+                    // Générer un avatar basé sur le nom
+                    const name = this.user.name || 'Utilisateur TED';
+                    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=8B5FBF&color=fff&size=150`;
+                    document.getElementById('user-avatar-img').src = avatarUrl;
+                }
+            }
+            
+            loadSubscriptionInfo() {
+                if (!this.user) return;
+                
+                if (this.user.subscription) {
+                    const plan = this.user.subscription.plan;
+                    document.getElementById('user-status').textContent = plan.toUpperCase();
+                    document.getElementById('user-status').className = `status-badge ${plan}`;
+                    document.getElementById('current-plan').textContent = this.capitalizeFirstLetter(plan);
+                    
+                    if (plan === 'premium' || plan === 'vip') {
+                        document.getElementById('plan-description').textContent = 'Accès complet sans publicités';
+                        document.getElementById('upgrade-plan').innerHTML = '<i class="fas fa-cog"></i> Gérer';
+                    } else {
+                        document.getElementById('plan-description').textContent = 'Accès limité avec publicités';
+                    }
+                }
+            }
+            
+            capitalizeFirstLetter(string) {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            
+            loadReadingStats() {
+                // Charger les statistiques de lecture depuis localStorage
+                const readingStats = JSON.parse(localStorage.getItem('reading_stats') || '{}');
+                const favorites = JSON.parse(localStorage.getItem('user_favorites') || '[]');
+                
+                // Mettre à jour les compteurs
+                document.getElementById('books-read').textContent = readingStats.totalBooks || 0;
+                document.getElementById('favorites-count').textContent = favorites.length || 0;
+                document.getElementById('reading-time').textContent = Math.floor((readingStats.totalReadingTime || 0) / 60);
+                
+                // Historique
+                document.getElementById('total-books').textContent = readingStats.totalBooks || 0;
+                document.getElementById('total-hours').textContent = Math.floor((readingStats.totalReadingTime || 0) / 60);
+                document.getElementById('reading-streak').textContent = readingStats.currentStreak || 0;
+                
+                // Charger l'activité récente
+                this.loadRecentActivity();
+            }
+            
+            loadRecentActivity() {
+                const activity = JSON.parse(localStorage.getItem('reading_activity') || '[]');
+                const activityList = document.getElementById('activity-list');
+                
+                if (activity.length === 0) {
+                    activityList.innerHTML = `
+                        <div class="activity-empty">
+                            <i class="fas fa-book-reader"></i>
+                            <p>Commencez à lire pour voir votre historique</p>
+                            <a href="index.html#bibliotheque" class="btn-primary">
+                                <i class="fas fa-book"></i> Découvrir des romans
+                            </a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Afficher les 5 dernières activités
+                const recentActivity = activity.slice(-5).reverse();
+                activityList.innerHTML = '';
+                
+                recentActivity.forEach(item => {
+                    const activityItem = document.createElement('div');
+                    activityItem.className = 'activity-item';
+                    
+                    const date = new Date(item.timestamp).toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'short',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    
+                    activityItem.innerHTML = `
+                        <div class="activity-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="activity-content">
+                            <h4>${item.title || 'Roman lu'}</h4>
+                            <p>Chapitre ${item.chapter || '1'} • ${date}</p>
+                        </div>
+                        <div class="activity-progress">
+                            <div class="progress-bar-small">
+                                <div class="progress-fill" style="width: ${item.progress || 0}%"></div>
+                            </div>
+                            <span>${item.progress || 0}%</span>
+                        </div>
+                    `;
+                    
+                    activityList.appendChild(activityItem);
+                });
+            }
+            
+            setupEventListeners() {
+                // Navigation par onglets
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tab = item.dataset.tab;
+                        this.switchTab(tab);
+                    });
+                });
+                
+                // Modifier le profil
+                document.getElementById('edit-profile').addEventListener('click', () => {
+                    this.toggleEditMode(true);
+                });
+                
+                document.getElementById('cancel-edit').addEventListener('click', () => {
+                    this.toggleEditMode(false);
+                });
+                
+                // Formulaire de profil
+                document.getElementById('profile-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.updateProfile();
+                });
+                
+                // Formulaire de mot de passe
+                document.getElementById('password-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.changePassword();
+                });
+                
+                // Voir/masquer les mots de passe
+                document.querySelectorAll('.toggle-password').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const targetId = e.currentTarget.dataset.target;
+                        const input = document.getElementById(targetId);
+                        const icon = e.currentTarget.querySelector('i');
+                        
+                        if (input.type === 'password') {
+                            input.type = 'text';
+                            icon.classList.remove('fa-eye');
+                            icon.classList.add('fa-eye-slash');
+                        } else {
+                            input.type = 'password';
+                            icon.classList.remove('fa-eye-slash');
+                            icon.classList.add('fa-eye');
+                        }
+                    });
+                });
+                
+                // Validation du mot de passe
+                document.getElementById('new-password').addEventListener('input', (e) => {
+                    this.checkPasswordStrength(e.target.value);
+                });
+                
+                document.getElementById('confirm-password').addEventListener('input', (e) => {
+                    this.checkPasswordMatch();
+                });
+                
+                // Gestion de l'avatar
+                document.getElementById('upload-avatar').addEventListener('click', () => {
+                    this.uploadAvatar();
+                });
+                
+                // Gérer l'abonnement
+                document.getElementById('upgrade-plan').addEventListener('click', () => {
+                    window.location.href = 'index.html#abonnement';
+                });
+                
+                // Effacer l'historique
+                document.getElementById('clear-history').addEventListener('click', () => {
+                    if (confirm('Êtes-vous sûr de vouloir effacer tout votre historique de lecture ?')) {
+                        localStorage.removeItem('reading_activity');
+                        localStorage.removeItem('reading_stats');
+                        this.loadReadingStats();
+                        alert('Historique effacé avec succès !');
+                    }
+                });
+                
+                // Contrôle de la taille de police
+                document.getElementById('decrease-font').addEventListener('click', () => {
+                    this.adjustFontSize(-1);
+                });
+                
+                document.getElementById('increase-font').addEventListener('click', () => {
+                    this.adjustFontSize(1);
+                });
+                
+                // Sélection du thème
+                document.querySelectorAll('.theme-option').forEach(option => {
+                    option.addEventListener('click', (e) => {
+                        const theme = e.currentTarget.dataset.theme;
+                        this.setTheme(theme);
+                    });
+                });
+                
+                // Sauvegarder la langue
+                document.getElementById('save-language').addEventListener('click', () => {
+                    this.saveLanguage();
+                });
+            }
+            
+            switchTab(tab) {
+                // Mettre à jour la navigation
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                    if (item.dataset.tab === tab) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                // Afficher l'onglet correspondant
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                document.getElementById(`${tab}-tab`).classList.add('active');
+            }
+            
+            toggleEditMode(edit) {
+                if (edit) {
+                    document.getElementById('profile-display').classList.add('hidden');
+                    document.getElementById('profile-form').classList.remove('hidden');
+                } else {
+                    document.getElementById('profile-display').classList.remove('hidden');
+                    document.getElementById('profile-form').classList.add('hidden');
+                    // Réinitialiser le formulaire
+                    document.getElementById('profile-name').value = this.user.name || '';
+                    document.getElementById('profile-email').value = this.user.email || '';
+                }
+            }
+            
+            updateProfile() {
+    const name = document.getElementById('profile-name').value;
+    const email = document.getElementById('profile-email').value;
+    
+    // Vérifier si l'email a changé
+    if (email !== this.user.email) {
+        if (!confirm('Un email de confirmation sera envoyé à votre nouvelle adresse. Continuer ?')) {
+            return;
+        }
+    }
+    
+    // ===== IMPORTANT : Mettre à jour dans localStorage =====
+    
+    // 1. Mettre à jour l'utilisateur courant
+    this.user.name = name;
+    this.user.email = email;
+    this.user.updatedAt = new Date().toISOString();
+    localStorage.setItem('ted_user', JSON.stringify(this.user));
+    
+    // 2. Mettre à jour dans la liste des utilisateurs
+    const users = JSON.parse(localStorage.getItem('ted_users') || '[]');
+    const userIndex = users.findIndex(u => u.id === this.user.id);
+    
+    if (userIndex > -1) {
+        users[userIndex].name = name;
+        users[userIndex].email = email;
+        users[userIndex].updatedAt = new Date().toISOString();
+        localStorage.setItem('ted_users', JSON.stringify(users));
+    }
+    
+    // ===== FIN DE LA MISE À JOUR =====
+    
+    // Mettre à jour l'affichage
+    this.displayUserInfo();
+    this.toggleEditMode(false);
+    
+    // Afficher un message de succès
+    alert('Profil mis à jour avec succès !\nLes changements seront visibles sur toutes les pages.');
+    
+    // Simuler l'envoi d'un email de confirmation si nécessaire
+    if (email !== this.user.email) {
+        console.log('Email de confirmation envoyé à:', email);
+    }
+} 
+            changePassword() {
+                const currentPassword = document.getElementById('current-password').value;
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                // Vérifier le mot de passe actuel
+                if (this.user.password !== currentPassword) {
+                    alert('Mot de passe actuel incorrect.');
+                    return;
+                }
+                
+                // Vérifier la force du mot de passe
+                if (!this.isPasswordStrong(newPassword)) {
+                    alert('Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule et un chiffre.');
+                    return;
+                }
+                
+                // Vérifier la confirmation
+                if (newPassword !== confirmPassword) {
+                    alert('Les mots de passe ne correspondent pas.');
+                    return;
+                }
+                
+                // Mettre à jour le mot de passe
+                this.user.password = newPassword;
+                this.user.passwordChangedAt = new Date().toISOString();
+                
+                // Sauvegarder
+                localStorage.setItem('ted_user', JSON.stringify(this.user));
+                
+                // Réinitialiser le formulaire
+                document.getElementById('password-form').reset();
+                document.getElementById('password-match').classList.remove('show');
+                document.getElementById('strength-text').textContent = 'Faible';
+                document.getElementById('strength-fill').style.width = '0%';
+                
+                // Afficher un message de succès
+                alert('Mot de passe changé avec succès !');
+            }
+            
+            isPasswordStrong(password) {
+                const minLength = 8;
+                const hasUpperCase = /[A-Z]/.test(password);
+                const hasLowerCase = /[a-z]/.test(password);
+                const hasNumbers = /\d/.test(password);
+                
+                return password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers;
+            }
+            
+            checkPasswordStrength(password) {
+                const strengthBar = document.getElementById('strength-fill');
+                const strengthText = document.getElementById('strength-text');
+                
+                let strength = 0;
+                let width = 0;
+                let text = 'Faible';
+                let color = '#F56565';
+                
+                // Vérifier la longueur
+                if (password.length >= 8) strength++;
+                if (password.length >= 12) strength++;
+                
+                // Vérifier la complexité
+                if (/[A-Z]/.test(password)) strength++;
+                if (/[a-z]/.test(password)) strength++;
+                if (/\d/.test(password)) strength++;
+                if (/[^A-Za-z0-9]/.test(password)) strength++;
+                
+                // Déterminer la force
+                if (strength <= 2) {
+                    width = 33;
+                    text = 'Faible';
+                    color = '#F56565';
+                } else if (strength <= 4) {
+                    width = 66;
+                    text = 'Moyen';
+                    color = '#ECC94B';
+                } else {
+                    width = 100;
+                    text = 'Fort';
+                    color = '#48BB78';
+                }
+                
+                // Mettre à jour l'affichage
+                strengthBar.style.width = `${width}%`;
+                strengthBar.style.backgroundColor = color;
+                strengthText.textContent = text;
+                strengthText.style.color = color;
+            }
+            
+            checkPasswordMatch() {
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                const matchElement = document.getElementById('password-match');
+                
+                if (newPassword && confirmPassword && newPassword === confirmPassword) {
+                    matchElement.classList.add('show');
+                } else {
+                    matchElement.classList.remove('show');
+                }
+            }
+            
+            uploadAvatar() {
+                // Créer un input file caché
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+                
+                input.onchange = (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    
+                    // Vérifier la taille du fichier (max 5MB)
+                    if (file.size > 5 * 1024 * 1024) {
+                        alert('L\'image est trop volumineuse (max 5MB)');
+                        return;
+                    }
+                    
+                    // Lire le fichier
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        // Mettre à jour l'avatar
+                        const img = document.getElementById('user-avatar-img');
+                        img.src = event.target.result;
+                        
+                        // Sauvegarder dans les données utilisateur
+                        this.user.avatar = event.target.result;
+                        localStorage.setItem('ted_user', JSON.stringify(this.user));
+                        
+                        alert('Avatar mis à jour avec succès !');
+                    };
+                    reader.readAsDataURL(file);
+                };
+                
+                input.click();
+            }
+            
+            adjustFontSize(delta) {
+                let currentSize = parseInt(localStorage.getItem('fontSize') || '16');
+                currentSize = Math.max(12, Math.min(24, currentSize + delta));
+                
+                localStorage.setItem('fontSize', currentSize.toString());
+                document.getElementById('font-size-value').textContent = `${currentSize}px`;
+                
+                // Appliquer à la page
+                document.documentElement.style.fontSize = `${currentSize}px`;
+            }
+            
+            setTheme(theme) {
+                // Mettre à jour les boutons
+                document.querySelectorAll('.theme-option').forEach(option => {
+                    option.classList.remove('active');
+                    if (option.dataset.theme === theme) {
+                        option.classList.add('active');
+                    }
+                });
+                
+                // Sauvegarder la préférence
+                localStorage.setItem('theme', theme);
+                
+                // Appliquer le thème
+                document.body.className = `theme-${theme}`;
+            }
+            
+            saveLanguage() {
+                const language = document.getElementById('language-select').value;
+                localStorage.setItem('language', language);
+                alert('Préférence de langue enregistrée !');
+            }
+        }
+        
+        // Initialiser le gestionnaire de profil
+        let profileManager;
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            profileManager = new ProfileManager();
+            
+            // Charger les préférences
+            const savedFontSize = localStorage.getItem('fontSize');
+            if (savedFontSize) {
+                document.getElementById('font-size-value').textContent = `${savedFontSize}px`;
+            }
+            
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.querySelector(`[data-theme="${savedTheme}"]`).classList.add('active');
+            document.body.className = `theme-${savedTheme}`;
+            
+            const savedLanguage = localStorage.getItem('language') || 'fr';
+            document.getElementById('language-select').value = savedLanguage;
+        });
+        
+        // Gestion de la déconnexion
+        function showLogoutModal() {
+            document.getElementById('logout-modal').classList.remove('hidden');
+        }
+        
+        function hideLogoutModal() {
+            document.getElementById('logout-modal').classList.add('hidden');
+        }
+        
+        function logout() {
+    if (confirm('Voulez-vous vous déconnecter ?')) {
+        // SIMPLEMENT SUPPRIMER LA SESSION
+        localStorage.removeItem('ted_user');
+        
+        // REDIRIGER VERS L'ACCUEIL
+        window.location.href = 'index.html';
+    }
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centre d'aide - TED ROMANS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <h1>TED <span>ROMANS</span></h1>
+                </div>
+                <p class="tagline">L'excellence littéraire</p>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="index.html#bibliotheque"><i class="fas fa-book"></i> Bibliothèque</a></li>
+                    <li><a href="subscription.html"><i class="fas fa-gem"></i> Abonnement</a></li>
+                    <li><a href="help.html" class="active"><i class="fas fa-question-circle"></i> Aide</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero help-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Centre d'aide</h2>
+                    <p class="hero-subtitle">Trouvez rapidement des réponses à vos questions</p>
+                    <div class="search-help">
+                        <input type="text" placeholder="Rechercher une question..." id="help-search">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-book">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="help-content">
+        <div class="container">
+            <div class="help-grid">
+                <!-- Navigation -->
+                <div class="help-sidebar">
+                    <div class="sidebar-section">
+                        <h3><i class="fas fa-book"></i> Catégories</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="#compte"><i class="fas fa-user"></i> Compte & Profil</a></li>
+                            <li><a href="#lecture"><i class="fas fa-book-open"></i> Lecture</a></li>
+                            <li><a href="#abonnement-help"><i class="fas fa-gem"></i> Abonnement</a></li>
+                            <li><a href="#paiement"><i class="fas fa-credit-card"></i> Paiement</a></li>
+                            <li><a href="#technique"><i class="fas fa-cog"></i> Problèmes techniques</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-section">
+                        <h3><i class="fas fa-fire"></i> Questions populaires</h3>
+                        <ul class="sidebar-links">
+                            <li><a href="#faq1">Comment annuler mon abonnement ?</a></li>
+                            <li><a href="#faq2">Pourquoi je vois des publicités ?</a></li>
+                            <li><a href="#faq3">Comment réinitialiser mon mot de passe ?</a></li>
+                            <li><a href="#faq4">Lire hors connexion</a></li>
+                            <li><a href="#faq5">Problème de lecture</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-promo">
+                        <h4><i class="fas fa-comments"></i> Besoin d'aide ?</h4>
+                        <p>Notre équipe est là pour vous aider</p>
+                        <a href="contact.html" class="btn-primary">
+                            <i class="fas fa-envelope"></i> Nous contacter
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FAQ Content -->
+                <div class="help-main">
+                    <!-- Compte & Profil -->
+                    <section id="compte" class="faq-section">
+                        <h2><i class="fas fa-user"></i> Compte & Profil</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3>Comment créer un compte ?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Pour créer un compte sur TED ROMANS :</p>
+                                <ol>
+                                    <li>Cliquez sur "Inscription" en haut à droite</li>
+                                    <li>Remplissez le formulaire avec vos informations</li>
+                                    <li>Validez votre adresse email via le lien envoyé</li>
+                                    <li>Connectez-vous avec vos identifiants</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 id="faq3">Comment réinitialiser mon mot de passe ?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Si vous avez oublié votre mot de passe :</p>
+                                <ol>
+                                    <li>Cliquez sur "Connexion"</li>
+                                    <li>Puis sur "Mot de passe oublié ?"</li>
+                                    <li>Entrez votre adresse email</li>
+                                    <li>Suivez les instructions dans l'email reçu</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Lecture -->
+                    <section id="lecture" class="faq-section">
+                        <h2><i class="fas fa-book-open"></i> Lecture</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 id="faq5">Comment fonctionne la lecture ?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Notre système de lecture vous permet de :</p>
+                                <ul>
+                                    <li>Lire en ligne sur tous vos appareils</li>
+                                    <li>Reprendre là où vous vous êtes arrêté</li>
+                                    <li>Ajouter des livres aux favoris</li>
+                                    <li>Changer la taille de police</li>
+                                    <li>Activer le mode nuit</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 id="faq4">Comment lire hors connexion ?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Pour lire sans connexion internet :</p>
+                                <ol>
+                                    <li>Assurez-vous d'avoir un abonnement Premium</li>
+                                    <li>Ouvrez le roman que vous souhaitez télécharger</li>
+                                    <li>Cliquez sur l'icône <i class="fas fa-download"></i></li>
+                                    <li>Attendez le téléchargement complet</li>
+                                    <li>Accédez à "Bibliothèque > Téléchargés"</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Abonnement -->
+                    <section id="abonnement-help" class="faq-section">
+                        <h2><i class="fas fa-gem"></i> Abonnement</h2>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 id="faq2">Pourquoi je vois des publicités ?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Les publicités permettent de financer la version gratuite de TED ROMANS. Pour les supprimer :</p>
+                                <ul>
+                                    <li>Souscrivez à l'abonnement Premium</li>
+                                    <li>Profitez d'une lecture sans interruption</li>
+                                    <li>Accédez à tous les romans sans limite</li>
+                                    <li>Téléchargez pour lire hors ligne</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <h3 id="faq1">Comment annuler mon abonnement ?</h3>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Pour annuler votre abonnement :</p>
+                                <ol>
+                                    <li>Connectez-vous à votre compte</li>
+                                    <li>Allez dans "Profil > Abonnement"</li>
+                                    <li>Cliquez sur "Gérer l'abonnement"</li>
+                                    <li>Suivez les instructions d'annulation</li>
+                                </ol>
+                                <p><strong>Note :</strong> L'annulation prend effet à la fin de la période payée.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Links -->
+                    <div class="quick-links">
+                        <h3><i class="fas fa-external-link-alt"></i> Liens rapides</h3>
+                        <div class="links-grid">
+                            <a href="contact.html" class="quick-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>Formulaire de contact</span>
+                            </a>
+                            <a href="privacy.html" class="quick-link">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Confidentialité</span>
+                            </a>
+                            <a href="terms.html" class="quick-link">
+                                <i class="fas fa-file-contract"></i>
+                                <span>Conditions d'utilisation</span>
+                            </a>
+                            <a href="#technique" class="quick-link">
+                                <i class="fas fa-bug"></i>
+                                <span>Signaler un problème</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-crown"></i>
+                        <h2>TED <span>ROMANS</span></h2>
+                    </div>
+                    <p class="footer-tagline">L'excellence littéraire à portée de clic</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help.html" class="active">Centre d'aide</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="privacy.html">Confidentialité</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Restez informé</h4>
+                    <p>Recevez nos actualités</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TED ROMANS. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ accordéon
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.style.display = 'none';
+                        ans.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                        ans.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Basculer la réponse courante
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+        
+        // Recherche dans FAQ
+        document.getElementById('help-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

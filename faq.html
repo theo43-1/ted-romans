@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TED ROMANS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-crown"></i>
+                    <h1>TED <span>ROMANS</span></h1>
+                </div>
+                <p class="tagline">L'excellence littéraire</p>
+            </div>
+            
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li><a href="help.html"><i class="fas fa-question-circle"></i> Aide</a></li>
+                    <li><a href="faq.html" class="active"><i class="fas fa-comments"></i> FAQ</a></li>
+                    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero faq-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Questions Fréquentes</h2>
+                    <p class="hero-subtitle">Trouvez rapidement des réponses à vos questions</p>
+                    <div class="search-faq">
+                        <input type="text" placeholder="Rechercher une question..." id="faq-search">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-book">
+                        <i class="fas fa-question"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <section class="faq-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <a href="#compte" class="category-card">
+                    <i class="fas fa-user"></i>
+                    <h3>Compte</h3>
+                    <p>Création, connexion, profil</p>
+                </a>
+                <a href="#abonnement" class="category-card">
+                    <i class="fas fa-gem"></i>
+                    <h3>Abonnement</h3>
+                    <p>Premium, paiement, annulation</p>
+                </a>
+                <a href="#lecture" class="category-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Lecture</h3>
+                    <p>Fonctionnalités, hors-ligne</p>
+                </a>
+                <a href="#technique" class="category-card">
+                    <i class="fas fa-cog"></i>
+                    <h3>Technique</h3>
+                    <p>Problèmes, compatibilité</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-content">
+        <div class="container">
+            <!-- Compte -->
+            <section id="compte" class="faq-section">
+                <h2><i class="fas fa-user"></i> Compte & Profil</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment créer un compte sur TED ROMANS ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La création de compte est simple et gratuite :</p>
+                        <ol>
+                            <li>Cliquez sur "Inscription" en haut à droite de l'écran</li>
+                            <li>Remplissez le formulaire avec votre nom, email et mot de passe</li>
+                            <li>Validez votre adresse email en cliquant sur le lien que nous vous envoyons</li>
+                            <li>Connectez-vous et commencez à lire !</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>J'ai oublié mon mot de passe, que faire ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pas de panique ! Suivez ces étapes :</p>
+                        <ol>
+                            <li>Cliquez sur "Connexion"</li>
+                            <li>Puis sur "Mot de passe oublié ?"</li>
+                            <li>Entrez l'adresse email associée à votre compte</li>
+                            <li>Vous recevrez un email avec un lien de réinitialisation</li>
+                            <li>Cliquez sur le lien et créez un nouveau mot de passe</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Puis-je changer mon adresse email ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Oui, vous pouvez modifier votre adresse email :</p>
+                        <ol>
+                            <li>Connectez-vous à votre compte</li>
+                            <li>Allez dans "Profil > Paramètres"</li>
+                            <li>Cliquez sur "Modifier l'email"</li>
+                            <li>Entrez la nouvelle adresse email</li>
+                            <li>Validez via le lien envoyé à la nouvelle adresse</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Abonnement -->
+            <section id="abonnement" class="faq-section">
+                <h2><i class="fas fa-gem"></i> Abonnement & Paiement</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quelle est la différence entre gratuit et Premium ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Fonctionnalité</th>
+                                    <th>Gratuit</th>
+                                    <th>Premium</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Publicités</td>
+                                    <td>Oui</td>
+                                    <td>Non</td>
+                                </tr>
+                                <tr>
+                                    <td>Accès aux romans</td>
+                                    <td>Limité</td>
+                                    <td>Complet</td>
+                                </tr>
+                                <tr>
+                                    <td>Lecture hors-ligne</td>
+                                    <td>Non</td>
+                                    <td>Oui</td>
+                                </tr>
+                                <tr>
+                                    <td>Support</td>
+                                    <td>Standard</td>
+                                    <td>Prioritaire</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment annuler mon abonnement Premium ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Vous pouvez annuler à tout moment :</p>
+                        <ol>
+                            <li>Connectez-vous à votre compte</li>
+                            <li>Allez dans "Profil > Abonnement"</li>
+                            <li>Cliquez sur "Gérer l'abonnement"</li>
+                            <li>Suivez les instructions pour l'annulation</li>
+                        </ol>
+                        <p><strong>Important :</strong> L'annulation prend effet à la fin de la période payée.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Quels moyens de paiement acceptez-vous ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nous acceptons :</p>
+                        <ul>
+                            <li>Cartes de crédit (Visa, MasterCard, American Express)</li>
+                            <li>PayPal</li>
+                            <li>Google Pay</li>
+                            <li>Apple Pay</li>
+                        </ul>
+                        <p>Tous les paiements sont sécurisés via SSL 256-bit.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Lecture -->
+            <section id="lecture" class="faq-section">
+                <h2><i class="fas fa-book-open"></i> Lecture & Fonctionnalités</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment télécharger des romans pour lire hors-ligne ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Pour lire sans connexion internet (abonnement Premium requis) :</p>
+                        <ol>
+                            <li>Ouvrez le roman que vous souhaitez télécharger</li>
+                            <li>Cliquez sur l'icône de téléchargement <i class="fas fa-download"></i></li>
+                            <li>Attendez que le téléchargement se termine</li>
+                            <li>Accédez à "Bibliothèque > Téléchargés" pour voir vos romans</li>
+                            <li>Vous pouvez maintenant lire sans connexion</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Comment ajouter un roman aux favoris ?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Plusieurs méthodes :</p>
+                        <ul>
+                            <li>Sur la carte du roman, cliquez sur l'icône ♡</li>
+                            <li>Dans le lecteur, cliquez sur l'icône cœur en haut</li>
+                            <li>Accédez à "Favoris" dans votre profil pour gérer votre liste</li>
+                        </ul>
+                        <p><strong>Limite :</strong> Version gratuite : 10 favoris, Premium : illimité.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact CTA -->
+            <div class="contact-cta">
+                <h3><i class="fas fa-question-circle"></i> Vous ne trouvez pas votre réponse ?</h3>
+                <p>Notre équipe de support est là pour vous aider</p>
+                <a href="contact.html" class="btn-primary">
+                    <i class="fas fa-envelope"></i> Nous contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-crown"></i>
+                        <h2>TED <span>ROMANS</span></h2>
+                    </div>
+                    <p class="footer-tagline">L'excellence littéraire à portée de clic</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Support</h4>
+                        <ul>
+                            <li><a href="help.html">Centre d'aide</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="faq.html" class="active">FAQ</a></li>
+                            <li><a href="privacy.html">Confidentialité</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Recevez les nouveautés</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Votre email" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 TED ROMANS. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // FAQ accordéon
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Fermer les autres réponses
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.style.display = 'none';
+                        ans.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                        ans.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                    }
+                });
+                
+                // Basculer la réponse courante
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                } else {
+                    answer.style.display = 'block';
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                }
+            });
+        });
+        
+        // Recherche dans FAQ
+        document.getElementById('faq-search').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            const sections = document.querySelectorAll('.faq-section');
+            
+            let hasResults = false;
+            
+            sections.forEach(section => {
+                let sectionHasResults = false;
+                const items = section.querySelectorAll('.faq-item');
+                
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        sectionHasResults = true;
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Afficher/masquer la section
+                section.style.display = sectionHasResults ? 'block' : 'none';
+            });
+            
+            // Message si aucun résultat
+            const noResults = document.getElementById('no-results');
+            if (!hasResults && searchTerm) {
+                if (!noResults) {
+                    const message = document.createElement('div');
+                    message.id = 'no-results';
+                    message.innerHTML = `
+                        <div style="text-align: center; padding: 40px; color: var(--gray);">
+                            <i class="fas fa-search" style="font-size: 48px; margin-bottom: 20px;"></i>
+                            <h3>Aucun résultat trouvé</h3>
+                            <p>Aucune question ne correspond à votre recherche</p>
+                            <a href="contact.html" class="btn-secondary" style="margin-top: 20px;">
+                                <i class="fas fa-envelope"></i> Nous contacter
+                            </a>
+                        </div>
+                    `;
+                    document.querySelector('.faq-content .container').appendChild(message);
+                }
+            } else if (noResults) {
+                noResults.remove();
+            }
+        });
+        
+        // Ouvrir automatiquement la section recherchée
+        if (window.location.hash) {
+            const section = document.querySelector(window.location.hash);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>

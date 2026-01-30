@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonnements - TED Romans</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json"> 
+</head>
+<body>
+        <header class="main-header">
+                <div class="container">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <i class="fas fa-crown"></i>
+                            <h1>TED <span>ROMANS</span></h1>
+                        </div>
+                        <p class="tagline">L'excellence littéraire</p>
+                    </div>
+                    
+                    <nav class="main-nav">
+                        <ul class="nav-links">
+                                <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+                                <a href="library.html"><i class="fas fa-book-open"></i> Bibliothèque</a>
+                                <a href="subscription.html" class="active"><i class="fas fa-crown"></i> Abonnement</a>
+                                <a href="profile.html"><i class="fas fa-user"></i> Profil</a>
+                     
+                        </ul>
+                        
+                        <div class="mobile-menu-btn">
+                            <i class="fas fa-bars"></i>
+                        </div>
+                    </nav>
+                </div>
+            </header>   <div class="container">
+        <header class="subscription-header">
+            <h1><i class="fas fa-crown"></i> Choisissez Votre Abonnement</h1>
+            <p>Débloquez une expérience de lecture exceptionnelle</p>
+        </header>
+
+        <div class="plans-container">
+            <!-- Plan Basique -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3>Gratuit</h3>
+                    <div class="plan-price">0€<span>/mois</span></div>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Accès aux chapitres</li>
+                    <li><i class="fas fa-check"></i> 1 nouvelle par semaine</li>
+                    <li><i class="fas fa-times"></i> Accès complet</li>
+                    <li><i class="fas fa-times"></i> Sans publicités</li>
+                </ul>
+                <button class="btn btn-outline" onclick="selectPlan('basic')">
+                    Choisir ce plan
+                </button>
+            </div>
+
+            <!-- Plan Premium -->
+            <div class="plan-card featured">
+                <div class="plan-badge">POPULAIRE</div>
+                <div class="plan-header">
+                    <h3>Premium</h3>
+                    <div class="plan-price">9,99€<span>/mois</span></div>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Accès complet à tous les romans</li>
+                    <li><i class="fas fa-check"></i> Sans publicités</li>
+                    <li><i class="fas fa-check"></i> Nouvelles exclusives</li>
+                    <li><i class="fas fa-check"></i> Support prioritaire</li>
+                    <li><i class="fas fa-check"></i> Téléchargement hors-ligne</li>
+                </ul>
+                <button class="btn btn-primary" onclick="selectPlan('premium')">
+                    <i class="fas fa-crown"></i> Choisir Premium
+                </button>
+            </div>
+
+            <!-- Plan VIP -->
+            <div class="plan-card">
+                <div class="plan-header">
+                    <h3>VIP</h3>
+                    <div class="plan-price">14,99€<span>/mois</span></div>
+                </div>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> Tout inclus dans Premium</li>
+                    <li><i class="fas fa-check"></i> Rencontres avec les auteurs</li>
+                    <li><i class="fas fa-check"></i> Contenu pré-publication</li>
+                    <li><i class="fas fa-check"></i> Personnalisation avancée</li>
+                    <li><i class="fas fa-check"></i> Éditions limitées</li>
+                </ul>
+                <button class="btn btn-outline" onclick="selectPlan('vip')">
+                    Choisir ce plan
+                </button>
+            </div>
+        </div>
+
+        <div class="payment-container" id="payment-section" style="display: none;">
+            <h2><i class="fas fa-credit-card"></i> Paiement</h2>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label>Carte de crédit</label>
+                    <div class="card-input">
+                        <i class="fas fa-credit-card"></i>
+                        <input type="text" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date d'expiration</label>
+                        <input type="text" placeholder="MM/AA" required>
+                    </div>
+                    <div class="form-group">
+                        <label>CVV</label>
+                        <input type="text" placeholder="123" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nom sur la carte</label>
+                    <input type="text" placeholder="Votre nom" required>
+                </div>
+
+                <div class="payment-security">
+                    <i class="fas fa-lock"></i>
+                    <span>Paiement sécurisé SSL 256-bit</span>
+                </div>
+
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-lock"></i> Payer maintenant
+                </button>
+            </form>
+        </div>
+
+        <div class="features-showcase">
+            <h2><i class="fas fa-gem"></i> Avantages Premium</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-ad"></i>
+                    <h4>Sans Publicités</h4>
+                    <p>Lecture immersive sans interruptions</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-download"></i>
+                    <h4>Hors-ligne</h4>
+                    <p>Téléchargez et lisez partout</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-rocket"></i>
+                    <h4>Accès Anticipé</h4>
+                    <p>Lisez les chapitres avant tout le monde</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-headset"></i>
+                    <h4>Support VIP</h4>
+                    <p>Assistance prioritaire 24/7</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <i class="fas fa-crown"></i>
+                            <h2>TED <span>ROMANS</span></h2>
+                        </div>
+                        <p class="footer-tagline">L'excellence littéraire à portée de clic</p>
+                        <div class="footer-social">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Navigation</h4>
+                            <ul>
+                                <li><a href="index.html">Accueil</a></li>
+                                <li><a href="index.html">Bibliothèque</a></li>
+                                <li><a href="index.html">Favoris</a></li>
+                                <li><a href="subscription.html">Abonnement</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Romans</h4>
+                            <ul>
+                                <li><a href="#">Nouveautés</a></li>
+                                <li><a href="#">Populaires</a></li>
+                                <li><a href="#">Sélections</a></li>
+                                <li><a href="#">Complets</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-column">
+                            <h4>Support</h4>
+                            <ul>
+                                <li><a href="help.html">Centre d'aide</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="privacy.html">Politique de confidentialité</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <p>Recevez les nouveautés</p>
+                        <form class="newsletter-form" id="newsletter-form">
+                            <input type="email" placeholder="Votre email" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2026 TED ROMANS. Tous droits réservés.</p>
+                    <div class="footer-payment">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    <script src="script.js"></script>
+    <script>
+        let selectedPlan = null;
+        
+        function selectPlan(planId) {
+            selectedPlan = planId;
+            document.getElementById('payment-section').style.display = 'block';
+            window.scrollTo({
+                top: document.getElementById('payment-section').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        document.getElementById('payment-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const user = JSON.parse(localStorage.getItem('ted_user'));
+            if (!user) {
+                alert('Veuillez vous connecter d\'abord');
+                window.location.href = 'auth.html';
+                return;
+            }
+
+            const subscriptionManager = new SubscriptionManager();
+            const result = await subscriptionManager.processSubscription(selectedPlan, 'credit_card');
+            
+            if (result.success) {
+                alert('Abonnement activé avec succès !');
+                window.location.href = 'index.html';
+            } else {
+                alert('Erreur: ' + result.error);
+            }
+        });
+    </script>
+</body>
+</html>
